@@ -1,0 +1,16 @@
+{
+  "name": "1express",
+  "version": "1.0.0",
+  "description": "npm init",
+  "main": "entry.js",
+  "scripts": {
+    "start": "node entry.js",
+    "server": "nodemon entry.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^4.1.0"
+  }
+}
