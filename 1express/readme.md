@@ -1,4 +1,4 @@
-# 初始化项目
+# 初始化项目（后端项目）
 * npm init  
 entry point: (index.js) 设置入口文件，之后在目录中创建该文件
 * 编写入口文件
@@ -16,7 +16,7 @@ express:提供http请求处理的接口
         "scripts": {
             "test": "echo \"Error: no test specified\" && exit 1",
             "start": "node server.js",
-            "server": "nodemoon server.js"
+            "server": "nodemon server.js"
         },
 
 * 设置node全局配置  
