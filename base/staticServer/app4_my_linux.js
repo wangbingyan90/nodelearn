@@ -22,7 +22,8 @@ app.on("request", (req, res) => {
 })
  
 function readStaticFile(url, res) {
-    const pathstatic = path.join(__dirname, 'static', url)
+    // const pathstatic = path.join(__dirname, 'static', url)
+    const pathstatic = "/"+url
     console.log(pathstatic)
     const is_exists = fs.existsSync(pathstatic)
     if(!is_exists){
