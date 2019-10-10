@@ -39,11 +39,9 @@ function readStaticFile(url, res) {
         const direc = fs.readdirSync(pathstatic);
         let con = "<br>"
         console.log(url)
-        const url1 = url.substring(1)
         direc.forEach(element => {
             // con = con + "<a href=\""+url+"//"+element+"\">"+element+"</a><br>"
-            con = con + "<a href=\""+url1+"/"+element+"\">"+element+"</a><br>"
-            
+            con = con + "<a href=\""+url+"/"+element+"\">"+element+"</a><br>"
         });
         res.end("<h1>文件夹"+pathstatic+"<h1>"+con)
 
