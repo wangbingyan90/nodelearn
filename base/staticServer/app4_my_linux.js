@@ -11,7 +11,7 @@ const app = http.createServer();
  // 3.为这个server服务器，通过  on  方法，绑定一个 事件来监听每次请求
 app.on("request", (req, res) => {
     // 获取当前请文件名
-    let url = req.url;
+    let url = decodeURI(req.url);
     // 调用封装函数
     readStaticFile(url,res)
 })
@@ -27,30 +27,30 @@ function readStaticFile(url, res) {
     console.log(pathstatic)
     const is_exists = fs.existsSync(pathstatic)
     if(!is_exists){
-        return res.end("404");
+        return res.end("unexists");
     }
 
     const is_direc = fs.lstatSync(pathstatic).isDirectory();
 
     if(is_direc){
-        res.writeHead(404,{
+        res.writeHead(200,{
             'content-type' : 'text/html;charset=utf8'
         });
         const direc = fs.readdirSync(pathstatic);
         let con = "<br>"
         console.log(url)
+        const url1 = url.substr(1);
         direc.forEach(element => {
-            // con = con + "<a href=\""+url+"//"+element+"\">"+element+"</a><br>"
-            con = con + "<a href=\""+url+"/"+element+"\">"+element+"</a><br>"
+            con = con + "<a href=\""+url1+"/"+element+"\">"+element+"</a><br>"
         });
         res.end("<h1>文件夹"+pathstatic+"<h1>"+con)
 
     }else{
         fs.readFile(pathstatic, (err, data) => {
             // 找不到文件则返回404
-            if (err) return res.end("404");
+            if (err) return res.end("unFlie");
             // res.end来返回上面读取的内容
-            res.writeHead(404,{
+            res.writeHead(200,{
                 'content-type' : 'text/html;charset=utf8'
             });
             res.end(data)
